@@ -1,0 +1,39 @@
+<div class="grd">
+    <div class="grd-row">
+        <div class="grd-row-col-2">
+            <h1>Revisión Vehicular 2020</h1>
+
+
+            <form (ngSubmit)="nuevoAuto(newAutoForm.value)" [formGroup]="newAutoForm">
+                <input type="hidden" formControlName="idF">
+                <label for="marca">Marca</label>
+                <input type="text" formControlName="marcaF">
+                <label for="nombre">Modelo</label>
+                <input type="text" formControlName="modeloF">
+                <label for="nombre">Año</label>
+                <input type="text" formControlName="anioF">
+                <label for="url_img">Imagen</label>
+                <input type="url" formControlName="urlF">
+                <input type="submit" class="btn--blue btn--add" [disabled]="!newAutoForm.valid" value="Agregar">
+              </form>
+        </div>
+        <div class="grd-row-col-4">
+            <div class="cats_container">
+                <div class="media" *ngFor="let a of autos">
+                    <div class="media-figure">
+                        <img [src]="a.data.url">
+                    </div>
+                    <div class="media-body">
+                        <p>{{a.data.marca}}</p>
+                        <p>{{a.data.modelo}}</p>
+                        <div class="btn--group">
+                            <button class="btn--green btn--s btn1" (click)="actualizarAuto(a.id)">Editar</button>
+                            <button class="btn--red btn--s btn2" (click)="eliminarAuto(a.id)">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
